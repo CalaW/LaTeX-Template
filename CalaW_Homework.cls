@@ -30,9 +30,6 @@
 % provide dcases environment
 \RequirePackage{mathtools}
 
-% bold italic
-\RequirePackage{bm}
-
 \RequirePackage{graphicx}
 \RequirePackage{subfig}
 \RequirePackage{float}
@@ -49,13 +46,6 @@
 \RequirePackage{geometry}
 \geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}
 
-% \usepackage{titlesec}
-% \setcounter{secnumdepth}{4}
-% \titleformat{\section}[block]{\large\bfseries}{\arabic{section}.}{1em}{}[]
-% \titleformat{\subsection}[block]{\normalsize\bfseries}{\arabic{section}.\arabic{subsection}}{1em}{}[]
-% \titleformat{\subsubsection}[block]{\normalsize\bfseries}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1em}{}[]
-% \titleformat{\paragraph}[block]{\normalsize\bfseries}{\arabic{paragraph}}{1em}{}[]
-
 % customising headers and footers
 \usepackage{fancyhdr}
 \pagestyle{fancy} % use fancy style to enable custom headers and footers
@@ -63,7 +53,7 @@
 \fancyhead[C]{}
 \fancyhead[R]{\small chen-che20@mails.tsinghua.edu.cn}
 \fancyfoot[L,R]{}
-\fancyfoot[C]{--\ \thepage\ --}
+\fancyfoot[C]{\small --\ \thepage\ --}
 
 % customize the title
 \renewcommand{\maketitle}{
@@ -85,15 +75,21 @@
   \end{flushleft}
 }
 
-\RequirePackage[default]{fontsetup} % use new computer modern math font
-\setCJKmainfont{Source Han Serif SC} % Source/Noto CJK family
+% fonts
+% use new computer modern math font
+\RequirePackage[default]{fontsetup}
+% Source/Noto CJK family
+\setCJKmainfont{Source Han Serif SC}
 \setCJKsansfont{Source Han Sans SC}
 \setCJKmonofont{Source Han Mono SC}
-\setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy} % heavy weight family
+% heavy weight family
+\setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
 \setCJKfamilyfont{heavyhei}{Source Han Sans SC Heavy}
-\setmainfont{Source Han Serif SC} % Source/Noto Han family
+% Source/Noto Han family
+\setmainfont{Source Han Serif SC}
 \setsansfont{Source Han Sans SC}
 \setmonofont{Source Han Mono SC}
-% \setmainfont{Source Serif 4} % Source family
+% Source family
+% \setmainfont{Source Serif 4}
 % \setsansfont{Source Sans 3}
 % \setmonofont{Source Code Pro}
