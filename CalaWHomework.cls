@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaW_Homework}[2022/10/14 Homework class by CalaW]
+\ProvidesClass{CalaWHomework}[2022/10/14 Homework class by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -81,10 +81,12 @@
   \end{flushleft}
 }
 
+% color
+\RequirePackage{xcolor}
+
 % code listing
-\ifCalaW_Homework@minted
+\ifCalaWHomework@minted
   \RequirePackage{minted}
-  \RequirePackage{xcolor}
   \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \fi
 
@@ -98,20 +100,20 @@
 \PassOptionsToPackage{no-math}{fontspec}
 \RequirePackage[default]{fontsetup}
 % Source/Noto CJK family
-\setCJKmainfont{Source Han Serif SC}
-\setCJKsansfont{Source Han Sans SC}
-\setCJKmonofont{Source Han Mono SC}
+\setCJKmainfont{Source Han Serif SC}[Color=brown]
+\setCJKsansfont{Source Han Sans SC}[Color=grey]
+\setCJKmonofont{Source Han Mono SC}[Color=orange]
 % heavy weight family
 \setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
 \setCJKfamilyfont{heavyhei}{Source Han Sans SC Heavy}
 % Source/Noto Han family
-\setmainfont{Source Han Serif SC}
+\setmainfont{Source Han Serif SC}[Color=red]
 \setsansfont{Source Han Sans SC}
 % \setmonofont{Source Han Mono SC}
 % Source family
-% \setmainfont{Source Serif 4}
+% \setmainfont{Source Serif 4}[Color=red]
 % \setsansfont{Source Sans 3}
-\setmonofont{Source Code Pro}
+\setmonofont{Source Code Pro}[Color=blue]
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
