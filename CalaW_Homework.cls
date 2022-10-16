@@ -1,8 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaW_Homework}[2022/10/08 Homework class by CalaW]
+\ProvidesClass{CalaW_Homework}[2022/10/14 Homework class by CalaW]
 
-\LoadClass[fontset=none]{ctexart}
+\RequirePackage{kvoptions}
+
+\DeclareBoolOption{minted}
+
+\ProcessKeyvalOptions*
+
+\LoadClass[fontset=none, zihao=5]{ctexart}
 
 \def\headertitle#1{\def\@headertitle{#1}}
 \headertitle{\@title}
@@ -75,8 +81,21 @@
   \end{flushleft}
 }
 
+% code listing
+\ifCalaW_Homework@minted
+  \RequirePackage{minted}
+  \RequirePackage{xcolor}
+  \definecolor{bg}{rgb}{0.95,0.95,0.95}
+\fi
+
+% smart quote Causing quote width problems, all use fullwidth in Chinese.
+% \RequirePackage[autostyle]{csquotes}
+% \MakeAutoQuote{“}{”}
+
 % fonts
 % use new computer modern math font
+\PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
+\PassOptionsToPackage{no-math}{fontspec}
 \RequirePackage[default]{fontsetup}
 % Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
@@ -88,8 +107,11 @@
 % Source/Noto Han family
 \setmainfont{Source Han Serif SC}
 \setsansfont{Source Han Sans SC}
-\setmonofont{Source Han Mono SC}
+% \setmonofont{Source Han Mono SC}
 % Source family
 % \setmainfont{Source Serif 4}
 % \setsansfont{Source Sans 3}
-% \setmonofont{Source Code Pro}
+\setmonofont{Source Code Pro}
+
+% hyperref
+\RequirePackage[hidelinks]{hyperref}
