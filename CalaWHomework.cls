@@ -8,7 +8,7 @@
 
 \ProcessKeyvalOptions*
 
-\LoadClass[fontset=none, zihao=5]{ctexart}
+\LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
 
 \def\headertitle#1{\def\@headertitle{#1}}
 \headertitle{\@title}
@@ -81,6 +81,9 @@
   \end{flushleft}
 }
 
+% tables
+\RequirePackage{booktabs}
+
 % color
 \RequirePackage{xcolor}
 
@@ -88,6 +91,8 @@
 \ifCalaWHomework@minted
   \RequirePackage{minted}
   \definecolor{bg}{rgb}{0.95,0.95,0.95}
+  \setminted{breaklines, linenos, bgcolor=bg, frame=lines, fontsize=\small}
+  \setmintedinline{bgcolor={}, fontsize=\normalsize}
 \fi
 
 % smart quote Causing quote width problems, all use fullwidth in Chinese.
@@ -100,20 +105,21 @@
 \PassOptionsToPackage{no-math}{fontspec}
 \RequirePackage[default]{fontsetup}
 % Source/Noto CJK family
-\setCJKmainfont{Source Han Serif SC}[Color=brown]
-\setCJKsansfont{Source Han Sans SC}[Color=grey]
-\setCJKmonofont{Source Han Mono SC}[Color=orange]
+\setCJKmainfont{Source Han Serif SC}
+\setCJKsansfont{Source Han Sans SC}
+\setCJKmonofont{Source Han Mono SC}
 % heavy weight family
 \setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
 \setCJKfamilyfont{heavyhei}{Source Han Sans SC Heavy}
 % Source/Noto Han family
-\setmainfont{Source Han Serif SC}[Color=red]
+\setmainfont{Source Han Serif SC}
 \setsansfont{Source Han Sans SC}
 % \setmonofont{Source Han Mono SC}
 % Source family
-% \setmainfont{Source Serif 4}[Color=red]
+% \setmainfont{Source Serif 4}
 % \setsansfont{Source Sans 3}
-\setmonofont{Source Code Pro}[Color=blue]
+\setmonofont{Source Code Pro}
+% \setmonofont{MesloLGS Nerd Font Mono}
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
