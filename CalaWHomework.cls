@@ -82,11 +82,12 @@
   \end{flushleft}
 }
 
+% floats
+% \RequirePackage{float} % uncomment this if you want to use [H] option
+% \RequirePackage{caption}
+
 % figures
 \RequirePackage{graphicx}
-% \RequirePackage{subfig}
-% \RequirePackage{float}
-% \RequirePackage{caption}
 
 % tables
 \RequirePackage{booktabs}
