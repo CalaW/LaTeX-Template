@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWHomework}[2022/10/14 Homework class by CalaW]
+\ProvidesClass{CalaWHomework}[2022/11/13 Homework class by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -36,16 +36,17 @@
 % provide dcases environment
 \RequirePackage{mathtools}
 
-\RequirePackage{graphicx}
-\RequirePackage{subfig}
-\RequirePackage{float}
-\RequirePackage{caption}
+% unicode math, need to be loaded after mathtools
+% supress warnings related to mathtools
+\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 
 % type SI units, angles, numbers, etc.
+% need to be loaded after unicode-math
 \RequirePackage{siunitx}
 \sisetup{
     separate-uncertainty = true, % separate uncertainty from value with \pm
-    inter-unit-product = \ensuremath{{}\cdot{}} % display dot between units
+    inter-unit-product = \ensuremath{{}\cdot{}}, % display dot between units
+    % detect-mode, % uncomment this if want to use text font in text mode
 }
 
 % adjusting page dimensions and margins
@@ -81,6 +82,12 @@
   \end{flushleft}
 }
 
+% figures
+\RequirePackage{graphicx}
+% \RequirePackage{subfig}
+% \RequirePackage{float}
+% \RequirePackage{caption}
+
 % tables
 \RequirePackage{booktabs}
 
@@ -101,8 +108,8 @@
 
 % fonts
 % use new computer modern math font
-\PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
-\PassOptionsToPackage{no-math}{fontspec}
+% \PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
+\PassOptionsToPackage{no-math}{fontspec} % what is this?
 \RequirePackage[default]{fontsetup}
 % Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
