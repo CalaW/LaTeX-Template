@@ -80,11 +80,13 @@
     
     \vspace{30pt} % vertical whitespace below the title
   \end{flushleft}
+  \FloatBarrier
 }
 
 % floats
-% \RequirePackage{float} % uncomment this if you want to use [H] option
-% \RequirePackage{caption}
+\RequirePackage{float} % [H] option
+\RequirePackage{placeins} % \FloatBarrier
+\RequirePackage{caption}
 
 % figures
 \RequirePackage{graphicx}
