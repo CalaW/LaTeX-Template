@@ -3,7 +3,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWCV}[2023/02/10 simple CV class wrote by CalaW]
+\ProvidesClass{CalaWCV}[2023/02/11 simple CV class wrote by CalaW]
 
 \RequirePackage{kvoptions}
 % declare options
@@ -12,9 +12,10 @@
 \RequirePackage{xifthen}
 
 \LoadClass[a4paper]{article}
+\pagestyle{empty}
 
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
+% disable indent globally
+\setlength{\parindent}{0pt}
 
 \RequirePackage{geometry}
 \geometry{a4paper,left=0.8in,right=0.8in,top=0.7in,bottom=0.55in}
@@ -86,7 +87,7 @@
 \newcommand{\email}[1]{\faicon{envelope}\ \href{mailto:#1}{#1}}
 % defines one's phone
 % usage: \phone{<phone>}
-\newcommand{\phone}[1]{\faicon{phone}\ {#1}}
+\newcommand{\phone}[1]{\textbf{\faicon{phone}}\ {#1}}
 % defines one's linkedin
 % usage: \linkedin{<linkedin>}
 \newcommand{\linkedin}[2][]{\faicon{linkedin-in}\ 
