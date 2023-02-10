@@ -5,9 +5,13 @@
 \RequirePackage{kvoptions}
 
 \DeclareBoolOption{minted}
+\DeclareBoolOption{draft}
 
 \ProcessKeyvalOptions*
 
+\ifCalaWHomework@draft
+  \PassOptionsToClass{draft}{ctexart}
+\fi
 \LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
 
 \def\headertitle#1{\def\@headertitle{#1}}
@@ -99,6 +103,9 @@
 
 % code listing
 \ifCalaWHomework@minted
+  \ifCalaWHomework@draft
+    \PassOptionsToPackage{draft}{minted}
+  \fi
   \RequirePackage{minted}
   \definecolor{bg}{rgb}{0.95,0.95,0.95}
   \setminted{breaklines, linenos, bgcolor=bg, frame=lines, fontsize=\small}
@@ -113,7 +120,9 @@
 % use new computer modern math font
 % \PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
 \PassOptionsToPackage{no-math}{fontspec} % what is this?
-\RequirePackage[default]{fontsetup}
+\ifCalaWHomework@draft\else
+  \RequirePackage[default]{fontsetup}
+\fi
 % Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
 \setCJKsansfont{Source Han Sans SC}
@@ -130,6 +139,7 @@
 % \setsansfont{Source Sans 3}
 \setmonofont{Source Code Pro}
 % \setmonofont{MesloLGS Nerd Font Mono}
+% \setmonofont{Hacc}
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
