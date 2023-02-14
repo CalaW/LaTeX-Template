@@ -119,10 +119,10 @@
 % fonts
 % use new computer modern math font
 % \PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
-\PassOptionsToPackage{no-math}{fontspec} % what is this?
-\ifCalaWHomework@draft\else
-  \RequirePackage[default]{fontsetup}
-\fi
+\PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
+% \ifCalaWHomework@draft\else
+%   \RequirePackage[default]{fontsetup}
+% \fi
 % Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
 \setCJKsansfont{Source Han Sans SC}
@@ -138,8 +138,15 @@
 % \setmainfont{Source Serif 4}
 % \setsansfont{Source Sans 3}
 \setmonofont{Source Code Pro}
+% \setmonofont{MonoLisa}
 % \setmonofont{MesloLGS Nerd Font Mono}
 % \setmonofont{Hacc}
+% \setmathfont{STIX Two Math}
+% \setmathrm{STIX Two Text}
+\setmathfont{NewCMMath-Book.otf}
+\setmathrm{NewCMMath-Book.otf}
+% \setmathfont{Latin Modern Math}
+% \setmathrm{Latin Modern Roman}
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
