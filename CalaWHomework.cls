@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWHomework}[2022/11/13 Homework class by CalaW]
+\ProvidesClass{CalaWHomework}[2023/02/17 Homework class by CalaW]
 
 \RequirePackage{kvoptions}
 
