@@ -120,10 +120,10 @@
 % use new computer modern math font
 % \PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
 \PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
-% \ifCalaWHomework@draft\else
-%   \RequirePackage[default]{fontsetup}
-% \fi
-% Source/Noto CJK family
+\ifCalaWHomework@draft\else
+  \RequirePackage[default]{fontsetup}
+\fi
+Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
 \setCJKsansfont{Source Han Sans SC}
 \setCJKmonofont{Source Han Mono SC}
@@ -143,10 +143,60 @@
 % \setmonofont{Hacc}
 % \setmathfont{STIX Two Math}
 % \setmathrm{STIX Two Text}
-\setmathfont{NewCMMath-Book.otf}
-\setmathrm{NewCMMath-Book.otf}
+% \setmathfont{NewCMMath-Book.otf}
+% \setmathrm{NewCMMath-Book.otf}
 % \setmathfont{Latin Modern Math}
 % \setmathrm{Latin Modern Roman}
+% \setmathfont{latinmodern-math}[Extension=.otf]%
+% \setmathrm{lmroman10}[
+%   Extension      = .otf,
+%   UprightFont    = *-regular,
+%   BoldFont       = *-bold,
+%   ItalicFont     = *-italic,
+%   BoldItalicFont = *-bolditalic,
+% ]%
+% \setmathsf{lmsans10}[
+%   Extension      = .otf,
+%   UprightFont    = *-regular,
+%   BoldFont       = *-bold,
+%   ItalicFont     = *-oblique,
+%   BoldItalicFont = *-boldoblique,
+% ]%
+% \setmathtt{lmmonolt10}[
+%   Extension      = .otf,
+%   UprightFont    = *-regular,
+%   BoldFont       = *-bold,
+%   ItalicFont     = *-oblique,
+%   BoldItalicFont = *-boldoblique,
+% ]%
+
+% \setmathfont{NewCMMath-Book}[Extension=.otf]%
+% \setmathfont{NewCMMath-Book}[
+%   Extension    = .otf,
+%   StylisticSet = 1,
+%   range        = {scr,bfscr},
+% ]%
+% \setmathrm{NewCM10}[
+%   Extension      = .otf,
+%   UprightFont    = *-Book,
+%   BoldFont       = *-Bold,
+%   ItalicFont     = *-BookItalic,
+%   BoldItalicFont = *-BoldItalic,
+% ]%
+% \setmathsf{NewCMSans10}[
+%   Extension         = .otf,
+%   UprightFont       = *-Book,
+%   BoldFont          = *-Bold,
+%   ItalicFont        = *-BookOblique,
+%   BoldItalicFont    = *-BoldOblique,
+% ]%
+% \setmathtt{NewCMMono10}[
+%   Extension           = .otf,
+%   UprightFont         = *-Book,
+%   ItalicFont          = *-BookItalic,
+%   BoldFont            = *-Bold,
+%   BoldItalicFont      = *-BoldOblique,
+% ]%
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
