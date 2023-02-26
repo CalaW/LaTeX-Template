@@ -27,14 +27,14 @@
 % proof, lemma, theorem
 \RequirePackage{amsthm}
 \renewenvironment{proof}[1][\proofname]{\par
-\pushQED{\qed}%
-\normalfont \topsep6\p@\@plus6\p@\relax
-\trivlist
-\item\relax
-        {\bfseries % change to bold 证明
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item\relax
+  {\bfseries % change to bold 证明
     #1\@addpunct{.}}\hspace\labelsep\ignorespaces
 }{%
-\popQED\endtrivlist\@endpefalse
+  \popQED\endtrivlist\@endpefalse
 }
 
 % provide dcases environment
@@ -48,9 +48,9 @@
 % need to be loaded after unicode-math
 \RequirePackage{siunitx}
 \sisetup{
-    separate-uncertainty = true, % separate uncertainty from value with \pm
-    inter-unit-product = \ensuremath{{}\cdot{}}, % display dot between units
-    % detect-mode, % uncomment this if want to use text font in text mode
+  separate-uncertainty = true, % separate uncertainty from value with \pm
+  inter-unit-product = \ensuremath{{}\cdot{}}, % display dot between units
+  % detect-mode, % uncomment this if want to use text font in text mode
 }
 
 % adjusting page dimensions and margins
@@ -76,12 +76,12 @@
     \vspace{5pt}
 
     {\large\sffamily\bfseries\@homeworkname} % homework name, in Bold Sans
-    
+
     \vspace{15pt}
-    
+
     {\@author}\\ % author name
     {\small\@date} % date
-    
+
     \vspace{30pt} % vertical whitespace below the title
   \end{flushleft}
   \FloatBarrier
@@ -123,7 +123,7 @@
 \ifCalaWHomework@draft\else
   \RequirePackage[default]{fontsetup}
 \fi
-Source/Noto CJK family
+% Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
 \setCJKsansfont{Source Han Sans SC}
 \setCJKmonofont{Source Han Mono SC}

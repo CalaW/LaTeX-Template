@@ -7,12 +7,18 @@
 \ProvidesClass{CalaWCV}[2023/02/11 simple CV class wrote by CalaW]
 
 \RequirePackage{kvoptions}
-% declare options
+
+\DeclareBoolOption{zh}
+
 \ProcessKeyvalOptions*
 
 \RequirePackage{xifthen}
 
-\LoadClass[a4paper, 11pt]{article}
+\ifCalaWCV@zh
+  \LoadClass[fontset=none, 11pt]{ctexart}
+\else
+  \LoadClass[a4paper, 11pt]{article}
+\fi
 \pagestyle{empty}
 
 % disable indent globally
@@ -46,8 +52,17 @@
 
 % use fontspec to define fonts
 \RequirePackage{fontspec}
-\setmainfont{GaramondPremrPro}
-% \setmainfont{Source Serif 4}
+\ifCalaWCV@zh
+  % \setmainfont{Source Han Serif SC}
+  \setCJKmainfont{Source Han Serif SC}
+  \setCJKsansfont{Source Han Sans SC}
+  \setCJKmonofont{Source Han Mono SC}
+  \setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
+  \setmainfont{Source Han Serif SC}
+  \setsansfont{Source Han Sans SC}
+\else
+  \setmainfont{GaramondPremrPro}
+\fi
 
 % use fontawesome6 icons
 \RequirePackage{fontawesome6}
@@ -57,17 +72,17 @@
 
 
 \titleformat{\section}         % Customise the \section command 
-  {\Large\scshape\raggedright\color{maincolor}} % Make the \section headers large (\Large),
-                               % small capitals (\scshape) and left aligned (\raggedright)
-  {}{0em}                      % Can be used to give a prefix to all sections, like 'Section ...'
-  {}                           % Can be used to insert code before the heading
-  [\color{maincolor}\titlerule]                 % Inserts a horizontal line after the heading
+{\Large\scshape\raggedright\color{maincolor}} % Make the \section headers large (\Large),
+% small capitals (\scshape) and left aligned (\raggedright)
+{}{0em}                      % Can be used to give a prefix to all sections, like 'Section ...'
+{}                           % Can be used to insert code before the heading
+[\color{maincolor}\titlerule]                 % Inserts a horizontal line after the heading
 \titlespacing*{\section}{0cm}{*1.8}{*1.8}
 
 \titleformat{\subsection}
-  {\normalsize\raggedright}
-  {}{0em}
-  {}
+{\normalsize\raggedright}
+{}{0em}
+{}
 \titlespacing*{\subsection}{0cm}{*1.8}{*0.6}
 
 \newcommand{\datedsection}[2]{%
@@ -96,26 +111,26 @@
 \newcommand{\location}[1]{\textbf{\faicon{location-dot}}\ #1}
 % defines one's linkedin
 % usage: \linkedin{<linkedin>}
-\newcommand{\linkedin}[2][]{\faicon{linkedin-in}\ 
+\newcommand{\linkedin}[2][]{\faicon{linkedin-in}\
   \ifthenelse{\isempty{#1}}%
-    {\href{#2}{#2}}
-    {\href{#2}{#1}}}
-\newcommand{\linkedinsquare}[2][]{\faicon{linkedin}\ 
+  {\href{#2}{#2}}
+  {\href{#2}{#1}}}
+\newcommand{\linkedinsquare}[2][]{\faicon{linkedin}\
   \ifthenelse{\isempty{#1}}%
-    {\href{#2}{#2}}
-    {\href{#2}{#1}}}
+  {\href{#2}{#2}}
+  {\href{#2}{#1}}}
 % defines one's GitHub
 % usage: \githublink{<github>}
-\newcommand{\githubprofile}[2][]{\faicon{github}\ 
+\newcommand{\githubprofile}[2][]{\faicon{github}\
   \ifthenelse{\isempty{#1}}%
-    {{\color{maincolor}\href{#2}{#2}}}
-    {{\color{maincolor}\href{#2}{#1}}}}
+  {{\color{maincolor}\href{#2}{#2}}}
+  {{\color{maincolor}\href{#2}{#1}}}}
 % defines one's homepage
 % usage: \homepage{<homepage>}
-\newcommand{\homepage}[2][]{\textbf{\faicon{earth-asia}}\ 
+\newcommand{\homepage}[2][]{\textbf{\faicon{earth-asia}}\
   \ifthenelse{\isempty{#1}}%
-    {{\color{maincolor}\href{#2}{#2}}}
-    {{\color{maincolor}\href{#2}{#1}}}}
+  {{\color{maincolor}\href{#2}{#2}}}
+  {{\color{maincolor}\href{#2}{#1}}}}
 
 % icon links
 \newcommand{\filepdf}[1]{\href{#1}{\textbf{\faicon{file-pdf}}}}
