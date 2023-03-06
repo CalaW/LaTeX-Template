@@ -9,23 +9,38 @@
 \RequirePackage{kvoptions}
 
 \DeclareBoolOption{zh}
+\DeclareBoolOption{fangzhengfree}
+\DeclareBoolOption{fangzheng}
 
 \ProcessKeyvalOptions*
 
 \RequirePackage{xifthen}
 
+
 \ifCalaWCV@zh
-  \LoadClass[fontset=none, 11pt]{ctexart}
+  \LoadClass[a4paper]{article}
+  \RequirePackage[fontset=none, zihao=5]{ctex}
 \else
   \LoadClass[a4paper, 11pt]{article}
 \fi
+
 \pagestyle{empty}
 
 % disable indent globally
 \setlength{\parindent}{0pt}
 
 \RequirePackage{geometry}
-\geometry{a4paper,left=0.8in,right=0.8in,top=0.7in,bottom=0.55in}
+% \ifCalaWCV@zh
+%   \geometry{
+%     a4paper,
+%     hcentering,
+%     textwidth=42\ccwd,
+%     top=0.7in,
+%     bottom=0.55in
+%   }
+% \else
+  \geometry{a4paper,left=0.8in,right=0.8in,top=0.7in,bottom=0.55in}
+% \fi
 
 % BibLaTeX
 \RequirePackage[style=ieee]{biblatex}
@@ -35,7 +50,7 @@
 \definecolor{classicblue}{RGB}{15,76,129} % pantone classic blue
 \definecolor{vivamagenta}{RGB}{190,52,85} % pantone vivamagenta
 \definecolor{tsinghuapurple}{RGB}{102,8,116} % tsinghua purple
-\colorlet{maincolor}{tsinghuapurple}
+\colorlet{maincolor}{classicblue}
 
 % package for customising section headings
 \RequirePackage{titlesec}
@@ -52,14 +67,119 @@
 
 % use fontspec to define fonts
 \RequirePackage{fontspec}
+\newcommand\calaw@set@font@times{%
+  \setmainfont{Times New Roman}[Scale = MatchUppercase]%
+  \setsansfont{Helvetica Neue}%
+  \setmonofont{SF Mono}%
+}
+\newcommand\calaw@set@font@garamond{%
+  \setmainfont{GaramondPremrPro}[Scale = MatchUppercase]%
+  \setsansfont{Helvetica Neue}%
+  \setmonofont{SF Mono}%
+}
+\newcommand\calaw@set@font@libertine{%
+  \setmainfont{Linux Libertine}[Scale = MatchUppercase]%
+  % \setmainfont{Joanna Nova}[Scale = MatchUppercase, BoldFont = * Medium]%
+  \setsansfont{Helvetica Neue}%
+  \setmonofont{SF Mono}%
+}
+\newcommand\calaw@set@font@source{%
+  \setmainfont{SourceSerif4}[
+    Scale = MatchUppercase,
+    UprightFont = *-Light,
+    ItalicFont = *-LightIt,
+    BoldFont    = *-Semibold,
+    BoldItalicFont = *-SemiboldIt,
+  ]%
+  \setsansfont{Source Sans 3}%
+  \setmonofont{Source Code Pro}%
+}
+\newcommand\calaw@set@font@stix{%
+  \setmainfont{STIX Two Text}
+  \setsansfont{Helvetica Neue}%
+  \setmonofont{SF Mono}%
+}
+\newcommand\calaw@set@cjk@font@source{%
+  \setCJKmainfont{Source Han Serif SC}[
+    UprightFont = * Light,
+    BoldFont    = * Bold,
+    ItalicFont  = 方正楷体_GBK,
+  ]%
+  \setCJKsansfont{Source Han Sans SC}[BoldFont = * Medium]%
+  \setCJKmonofont{Source Han Mono SC}%
+  \setCJKfamilyfont{zhsong}{Source Han Serif SC}[
+    UprightFont    = * Light,
+    UprightFont    = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Source Han Sans SC}[BoldFont = * Medium]%
+  \setCJKfamilyfont{zhfs}{方正仿宋 GBK}%
+  \setCJKfamilyfont{zhkai}{方正楷体_GBK}%
+}
+\newcommand\calaw@set@cjk@font@customsource{%
+  \setmainfont{思源宋体}
+  \setCJKmainfont{思源宋体}[
+    % UprightFont = * Light,
+    % BoldFont    = * Bold,
+    ItalicFont  = 方正聚珍新仿 GBK,
+  ]%
+  \setCJKsansfont{苹方-简}%
+  \setCJKmonofont{思源等宽}%
+  \setCJKfamilyfont{zhsong}{思源宋体}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{思源黑体}[BoldFont = * Medium]%
+  \setCJKfamilyfont{zhfs}{方正聚珍新仿 GBK}%
+  \setCJKfamilyfont{zhkai}{方正楷体_GBK}%
+}
+\newcommand\calaw@set@cjk@font@fz{%
+  \setCJKmainfont{方正书宋_GBK}[
+    BoldFont = 方正黑体_GBK,
+    ItalicFont  = 方正楷体_GBK,
+  ]%
+  \setCJKsansfont{方正黑体_GBK}%
+  \setCJKmonofont{方正黑体_GBK}%
+  \setCJKfamilyfont{zhsong}{方正书宋_GBK}%
+  \setCJKfamilyfont{zhhei}{方正黑体_GBK}%
+  \setCJKfamilyfont{zhfs}{方正仿宋_GBK}%
+  \setCJKfamilyfont{zhkai}{方正楷体_GBK}%
+}
+\newcommand\calaw@set@cjk@font@fznonfree{%
+  \setCJKmainfont{方正新书宋_GBK}[
+    ItalicFont = 方正聚珍新仿 GBK,
+  ]%
+  \setCJKsansfont{苹方-简}%
+  \setCJKmonofont{苹方-简}%
+  \setCJKfamilyfont{zhsong}{方正新书宋_GBK}%
+  \setCJKfamilyfont{zhhei}{苹方-简}%
+  \setCJKfamilyfont{zhfs}{方正聚珍新仿 GBK}%
+  \setCJKfamilyfont{zhkai}{方正楷体_GBK}%
+}
+\newcommand\calaw@set@cjk@font@fzyou{%
+  \setCJKmainfont{方正悠宋+ GBK}[
+    UprightFont = * 507R,
+    ItalicFont = 方正聚珍新仿 GBK,
+  ]%
+  \setCJKsansfont{苹方-简}%
+  \setCJKmonofont{苹方-简}%
+  \setCJKfamilyfont{zhsong}{方正新书宋_GBK}%
+  \setCJKfamilyfont{zhhei}{苹方-简}%
+  \setCJKfamilyfont{zhfs}{方正聚珍新仿 GBK}%
+  \setCJKfamilyfont{zhkai}{方正楷体_GBK}%
+}
 \ifCalaWCV@zh
+  % \calaw@set@cjk@font@fz%
+  \calaw@set@cjk@font@customsource%
+  \calaw@set@font@libertine%
+  % % \setmainfont{Source Han Serif SC}
+  % \setCJKmainfont{Source Han Serif SC}
+  % \setCJKsansfont{Source Han Sans SC}
+  % \setCJKmonofont{Source Han Mono SC}
   % \setmainfont{Source Han Serif SC}
-  \setCJKmainfont{Source Han Serif SC}
-  \setCJKsansfont{Source Han Sans SC}
-  \setCJKmonofont{Source Han Mono SC}
-  \setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
-  \setmainfont{Source Han Serif SC}
-  \setsansfont{Source Han Sans SC}
+  % \setsansfont{Source Han Sans SC}
+  % \setmonofont{Source Code Pro}
+  % \newcommand{\useEnFontForLatin}{\setmainfont{Source Serif 4}\setsansfont{Source Sans 3}}
+  % \newcommand{\useZhFontForLatin}{\setmainfont{Source Han Serif SC}\setsansfont{Source Han Sans SC}}
 \else
   \setmainfont{GaramondPremrPro}
 \fi
@@ -72,8 +192,11 @@
 
 
 \titleformat{\section}         % Customise the \section command 
-{\Large\scshape\raggedright\color{maincolor}} % Make the \section headers large (\Large),
-% small capitals (\scshape) and left aligned (\raggedright)
+{\ifCalaWCV@zh
+  \large\sffamily\bfseries\raggedright\color{maincolor}
+\else
+  \Large\scshape\raggedright\color{maincolor}
+\fi} % Make the \section headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
 {}{0em}                      % Can be used to give a prefix to all sections, like 'Section ...'
 {}                           % Can be used to insert code before the heading
 [\color{maincolor}\titlerule]                 % Inserts a horizontal line after the heading
@@ -98,7 +221,11 @@
 % defines one's name
 % usage: \name{<name>}
 \newcommand{\name}[1]{%
+\ifCalaWCV@zh
+  \centerline{\huge\bfseries{#1}}%
+\else
   \centerline{\Huge\scshape{#1}}%
+\fi
   \vspace{2ex}
 }
 
@@ -144,6 +271,10 @@
 
 \newcommand{\role}[2]{
   % {\par \textit{#1} ~ #2 \par}
-  {\textit{#1} ~ #2 \par}
+  \ifCalaWCV@zh
+    {\par \textit{#1}　#2 \par}
+  \else
+    {\par \textit{#1} ~ #2 \par}
+  \fi
   % \vspace{0.85ex}
 }
