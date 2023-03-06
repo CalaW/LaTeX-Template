@@ -6,12 +6,14 @@
 
 \DeclareBoolOption{minted}
 \DeclareBoolOption{draft}
+\DeclareBoolOption{stix}
 
 \ProcessKeyvalOptions*
 
 \ifCalaWHomework@draft
   \PassOptionsToClass{draft}{ctexart}
 \fi
+\PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
 \LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
 
 \def\headertitle#1{\def\@headertitle{#1}}
@@ -22,7 +24,7 @@
 \homeworkname{}
 
 \RequirePackage{amsmath}
-\RequirePackage{amssymb}
+% \RequirePackage{amssymb}
 
 % proof, lemma, theorem
 \RequirePackage{amsthm}
@@ -31,11 +33,41 @@
   \normalfont \topsep6\p@\@plus6\p@\relax
   \trivlist
   \item\relax
-  {\bfseries % change to bold 证明
+  {\bfseries % change to bold proof
     #1\@addpunct{.}}\hspace\labelsep\ignorespaces
 }{%
   \popQED\endtrivlist\@endpefalse
 }
+
+\def\@slname{解}
+\def\slname#1{\renewcommand\@slname{#1}}
+
+\@ifundefined{solution}{
+  \newenvironment{solution}
+  {
+    \proof[\@slname]
+  }
+  {
+    % no qed symbol in solution env
+    \renewcommand{\qedsymbol}{}
+    \endproof
+  }
+}{}
+
+\def\@ansname{答}
+\def\ansname#1{\renewcommand\@ansname{#1}}
+
+\@ifundefined{answer}{
+  \newenvironment{answer}
+  {
+    \proof[\@ansname]
+  }
+  {
+    % no qed symbol in answer env
+    \renewcommand{\qedsymbol}{}
+    \endproof
+  }
+}{}
 
 % provide dcases environment
 \RequirePackage{mathtools}
@@ -43,6 +75,10 @@
 % unicode math, need to be loaded after mathtools
 % supress warnings related to mathtools
 \RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\DeclareRobustCommand\bm[1]{{\symbfit{##1}}}%
+\DeclareRobustCommand\boldsymbol[1]{{\symbfit{##1}}}%
+\newcommand\square{\mdlgwhtsquare}%
+\newcommand\blacksquare{\mdlgblksquare}% 
 
 % type SI units, angles, numbers, etc.
 % need to be loaded after unicode-math
@@ -117,12 +153,37 @@
 % \MakeAutoQuote{“}{”}
 
 % fonts
+\newcommand\calaw@set@font@stix{%
+  % \setmainfont{STIX Two Text}[Scale=MatchLowercase]%
+  \setmainfont{STIX Two Text}%
+  \setsansfont{Helvetica Neue}%
+  \setmonofont{SF Mono}%
+}
+\newcommand\calaw@set@math@font@stix{%
+  \setmathfont{STIX Two Math}[
+    Scale = MatchLowercase,
+    % StylisticSet = \thu@xits@integral@stylistic@set,
+  ]%
+  \setmathfont{STIX Two Math}[
+    Scale = MatchLowercase,
+    StylisticSet = 1,
+    range = {scr,bfscr},
+  ]%
+}
 % use new computer modern math font
 % \PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
-\PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
-\ifCalaWHomework@draft\else
+% \PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
+\ifCalaWHomework@stix
+% TODO use stix2 font
+  % \AtEndPreamble{
+    \calaw@set@font@stix
+    \calaw@set@math@font@stix
+  % }
+  % \RequirePackage[stixtwo]{fontsetup}
+\else
   \RequirePackage[default]{fontsetup}
 \fi
+% \RequirePackage[default]{fontsetup}
 % Source/Noto CJK family
 \setCJKmainfont{Source Han Serif SC}
 \setCJKsansfont{Source Han Sans SC}
@@ -138,65 +199,19 @@
 % \setmainfont{Source Serif 4}
 % \setsansfont{Source Sans 3}
 \setmonofont{Source Code Pro}
-% \setmonofont{MonoLisa}
-% \setmonofont{MesloLGS Nerd Font Mono}
-% \setmonofont{Hacc}
-% \setmathfont{STIX Two Math}
-% \setmathrm{STIX Two Text}
-% \setmathfont{NewCMMath-Book.otf}
-% \setmathrm{NewCMMath-Book.otf}
-% \setmathfont{Latin Modern Math}
-% \setmathrm{Latin Modern Roman}
-% \setmathfont{latinmodern-math}[Extension=.otf]%
-% \setmathrm{lmroman10}[
-%   Extension      = .otf,
-%   UprightFont    = *-regular,
-%   BoldFont       = *-bold,
-%   ItalicFont     = *-italic,
-%   BoldItalicFont = *-bolditalic,
-% ]%
-% \setmathsf{lmsans10}[
-%   Extension      = .otf,
-%   UprightFont    = *-regular,
-%   BoldFont       = *-bold,
-%   ItalicFont     = *-oblique,
-%   BoldItalicFont = *-boldoblique,
-% ]%
-% \setmathtt{lmmonolt10}[
-%   Extension      = .otf,
-%   UprightFont    = *-regular,
-%   BoldFont       = *-bold,
-%   ItalicFont     = *-oblique,
-%   BoldItalicFont = *-boldoblique,
-% ]%
 
-% \setmathfont{NewCMMath-Book}[Extension=.otf]%
-% \setmathfont{NewCMMath-Book}[
-%   Extension    = .otf,
-%   StylisticSet = 1,
-%   range        = {scr,bfscr},
-% ]%
-% \setmathrm{NewCM10}[
-%   Extension      = .otf,
-%   UprightFont    = *-Book,
-%   BoldFont       = *-Bold,
-%   ItalicFont     = *-BookItalic,
-%   BoldItalicFont = *-BoldItalic,
-% ]%
-% \setmathsf{NewCMSans10}[
-%   Extension         = .otf,
-%   UprightFont       = *-Book,
-%   BoldFont          = *-Bold,
-%   ItalicFont        = *-BookOblique,
-%   BoldItalicFont    = *-BoldOblique,
-% ]%
-% \setmathtt{NewCMMono10}[
-%   Extension           = .otf,
-%   UprightFont         = *-Book,
-%   ItalicFont          = *-BookItalic,
-%   BoldFont            = *-Bold,
-%   BoldItalicFont      = *-BoldOblique,
-% ]%
+\RequirePackage{xstring}
+% \emfontdeclare{\kaishu\itshape}
+% \strongfontdeclare{\heiti\bfseries}
+
+\newcommand*{\matr}[1]{\symbfit{#1}}
+\newcommand*{\vect}[1]{%
+  \IfInteger{#1}{%
+  \symbf{#1}}{%  true
+  \symbfit{#1}}% false
+}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Tran}{^{\mkern-1.5mu\symsf{T}}}
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
