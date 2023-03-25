@@ -74,7 +74,10 @@
 
 % unicode math, need to be loaded after mathtools
 % supress warnings related to mathtools
-\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\RequirePackage[
+  warnings-off={mathtools-colon,mathtools-overbracket},
+  partial=upright,]
+  {unicode-math}
 \DeclareRobustCommand\bm[1]{{\symbfit{##1}}}%
 \DeclareRobustCommand\boldsymbol[1]{{\symbfit{##1}}}%
 \newcommand\square{\mdlgwhtsquare}%
@@ -108,17 +111,12 @@
   \begin{flushleft} % left align
     {\LARGE\sffamily\bfseries\@classname} % class name, in Bold Sans
     % {\LARGE\CJKfamily{heavyhei}\@classname} % use heavy weight
-
-    \vspace{5pt}
-
+    \par \vspace{5pt} \par
     {\large\sffamily\bfseries\@homeworkname} % homework name, in Bold Sans
-
-    \vspace{15pt}
-
+    \par \vspace{15pt} \par
     {\@author}\\ % author name
     {\small\@date} % date
-
-    \vspace{30pt} % vertical whitespace below the title
+    \par \vspace{30pt} % vertical whitespace below the title
   \end{flushleft}
   \FloatBarrier
 }
@@ -211,7 +209,13 @@
   \symbfit{#1}}% false
 }
 \newcommand*{\R}{\mathbb{R}}
-\newcommand*{\Tran}{^{\mkern-1.5mu\symsf{T}}}
+% \newcommand*{\Tran}{^{\mkern-1.5mu\symsf{T}}}
+\newcommand*{\Tran}{^{\symsf{T}}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
