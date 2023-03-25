@@ -43,7 +43,7 @@
 % \fi
 
 % BibLaTeX
-\RequirePackage[style=ieee]{biblatex}
+% \RequirePackage[style=ieee]{biblatex}
 
 % use xcolor to define colors
 \RequirePackage{xcolor}
@@ -181,7 +181,12 @@
   % \newcommand{\useEnFontForLatin}{\setmainfont{Source Serif 4}\setsansfont{Source Sans 3}}
   % \newcommand{\useZhFontForLatin}{\setmainfont{Source Han Serif SC}\setsansfont{Source Han Sans SC}}
 \else
-  \setmainfont{GaramondPremrPro}
+  % \setmainfont{GaramondPremrPro}
+  % \setmainfont{Linux Libertine}
+  \setmainfont{Libertinus Serif}
+  % \setmainfont{Joanna Nova}%
+  \setsansfont{Helvetica Neue}
+  \setmonofont{SF Mono}
 \fi
 
 % use fontawesome6 icons
