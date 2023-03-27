@@ -229,7 +229,8 @@
 \ifCalaWCV@zh
   \centerline{\huge\bfseries{#1}}%
 \else
-  \centerline{\Huge\scshape{#1}}%
+  % \centerline{\Huge\scshape{#1}}%
+  \centerline{\setmainfont{GaramondPremrPro}\Huge\scshape{#1}}%
 \fi
   \vspace{2ex}
 }
