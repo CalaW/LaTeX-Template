@@ -209,6 +209,10 @@
   \symbfit{#1}}% false
 }
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\C}{\mathbb{C}}
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\Q}{\mathbb{Q}}
 % \newcommand*{\Tran}{^{\mkern-1.5mu\symsf{T}}}
 \newcommand*{\Tran}{^{\symsf{T}}}
 \renewcommand{\Re}{\operatorname{Re}}
