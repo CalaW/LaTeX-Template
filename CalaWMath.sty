@@ -1,0 +1,22 @@
+\newcommand*{\matr}[1]{\symbfit{#1}}
+\newcommand*{\vect}[1]{%
+  \IfInteger{#1}{%
+  \symbf{#1}}{%  true
+  \symbfit{#1}}% false
+}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\C}{\mathbb{C}}
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\Q}{\mathbb{Q}}
+% \newcommand*{\Tran}{^{\mkern-1.5mu\symsf{T}}}
+\newcommand*{\Tran}{^{\symsf{T}}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\tr}{tr}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\Bias}{Bias}
+\DeclareMathOperator*{\Var}{Var}
