@@ -4,7 +4,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWCV}[2023/02/11 simple CV class wrote by CalaW]
+\ProvidesClass{CalaWCV}[2023/08/29 simple CV class wrote by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -77,10 +77,10 @@
   \setsansfont{Helvetica Neue}%
   \setmonofont{SF Mono}%
 }
-\newcommand\calaw@set@font@libertine{%
-  \setmainfont{Linux Libertine}[Scale = MatchUppercase]%
-  % \setmainfont{Joanna Nova}[Scale = MatchUppercase, BoldFont = * Medium]%
-  \setsansfont{Helvetica Neue}%
+\newcommand\calaw@set@font@libertinus{%
+  \setmainfont{Libertinus Serif}[Scale = MatchUppercase]%
+  \setsansfont{Libertinus Sans}[Scale = MatchUppercase]%
+  % \setsansfont{Helvetica Neue}%
   \setmonofont{SF Mono}%
 }
 \newcommand\calaw@set@font@source{%
@@ -170,7 +170,7 @@
 \ifCalaWCV@zh
   % \calaw@set@cjk@font@fz%
   \calaw@set@cjk@font@customsource%
-  \calaw@set@font@libertine%
+  \calaw@set@font@libertinus%
   % % \setmainfont{Source Han Serif SC}
   % \setCJKmainfont{Source Han Serif SC}
   % \setCJKsansfont{Source Han Sans SC}
@@ -227,7 +227,7 @@
 % usage: \name{<name>}
 \newcommand{\name}[1]{%
 \ifCalaWCV@zh
-  \centerline{\huge\bfseries{#1}}%
+  \centerline{\huge\CJKfamily{zhfs}{#1}}%
 \else
   % \centerline{\Huge\scshape{#1}}%
   \centerline{\setmainfont{GaramondPremrPro}\Huge\scshape{#1}}%
