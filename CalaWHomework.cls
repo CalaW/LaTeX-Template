@@ -7,6 +7,7 @@
 \DeclareBoolOption{minted}
 \DeclareBoolOption{draft}
 \DeclareBoolOption{stix}
+\DeclareBoolOption{en}
 
 \ProcessKeyvalOptions*
 
@@ -14,7 +15,12 @@
   \PassOptionsToClass{draft}{ctexart}
 \fi
 \PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
-\LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
+
+\ifCalaWHomework@en
+  \LoadClass[a4paper, 11pt]{article}
+\else
+  \LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
+\fi
 
 \def\headertitle#1{\def\@headertitle{#1}}
 \headertitle{\@title}
@@ -54,7 +60,11 @@
   }
 }{}
 
-\def\@ansname{答}
+\ifCalaWHomework@en
+  \def\@ansname{\textmd{\emph{Answer}}}
+\else
+  \def\@ansname{答}
+\fi
 \def\ansname#1{\renewcommand\@ansname{#1}}
 
 \@ifundefined{answer}{
@@ -77,7 +87,7 @@
 \RequirePackage[
   warnings-off={mathtools-colon,mathtools-overbracket},
   partial=upright,]
-  {unicode-math}
+{unicode-math}
 \DeclareRobustCommand\bm[1]{{\symbfit{##1}}}%
 \DeclareRobustCommand\boldsymbol[1]{{\symbfit{##1}}}%
 \newcommand\square{\mdlgwhtsquare}%
@@ -172,31 +182,38 @@
 % \PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math} % supress warning
 % \PassOptionsToPackage{no-math}{fontspec} % fontspec will override math font, so must set no-math option
 \ifCalaWHomework@stix
-% TODO use stix2 font
+  % TODO use stix2 font
   % \AtEndPreamble{
-    \calaw@set@font@stix
-    \calaw@set@math@font@stix
+  \calaw@set@font@stix
+  \calaw@set@math@font@stix
   % }
   % \RequirePackage[stixtwo]{fontsetup}
 \else
-  \RequirePackage[default]{fontsetup}
+  \RequirePackage[libertinus]{fontsetup}
 \fi
 % \RequirePackage[default]{fontsetup}
-% Source/Noto CJK family
-\setCJKmainfont{Source Han Serif SC}
-\setCJKsansfont{Source Han Sans SC}
-\setCJKmonofont{Source Han Mono SC}
-% heavy weight family
-\setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
-\setCJKfamilyfont{heavyhei}{Source Han Sans SC Heavy}
-% Source/Noto Han family
-\setmainfont{Source Han Serif SC}
-\setsansfont{Source Han Sans SC}
-% \setmonofont{Source Han Mono SC}
-% Source family
-% \setmainfont{Source Serif 4}
-% \setsansfont{Source Sans 3}
-\setmonofont{Source Code Pro}
+\ifCalaWHomework@en
+  \setmainfont{Libertinus Serif}
+  \setsansfont{Helvetica Neue}
+  % \setsansfont{Libertinus Sans}
+  \setmonofont{SF Mono}
+\else
+  % Source/Noto CJK family
+  \setCJKmainfont{Source Han Serif SC}
+  \setCJKsansfont{Source Han Sans SC}
+  \setCJKmonofont{Source Han Mono SC}
+  % heavy weight family
+  \setCJKfamilyfont{heavysong}{Source Han Serif SC Heavy}
+  \setCJKfamilyfont{heavyhei}{Source Han Sans SC Heavy}
+  % Source/Noto Han family
+  \setmainfont{Source Han Serif SC}
+  \setsansfont{Source Han Sans SC}
+  % \setmonofont{Source Han Mono SC}
+  % Source family
+  % \setmainfont{Source Serif 4}
+  % \setsansfont{Source Sans 3}
+  \setmonofont{Source Code Pro}
+\fi
 
 \RequirePackage{xstring}
 % \emfontdeclare{\kaishu\itshape}
