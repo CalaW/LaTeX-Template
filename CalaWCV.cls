@@ -4,7 +4,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWCV}[2023/08/29 simple CV class wrote by CalaW]
+\ProvidesClass{CalaWCV}[2024/12/26 simple CV class wrote by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -266,9 +266,14 @@
   {{\color{maincolor}\href{#2}{#1}}}}
 
 % icon links
-\newcommand{\filepdf}[1]{\href{#1}{\textbf{\faicon{file-pdf}}}}
-\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\faicon{orcid}}}
-\newcommand{\github}[1]{\href{https://github.com/#1}{\faicon{github}}}
+\newcommand{\filepdf}[1]{\normalfont\href{#1}{\textbf{\faicon{file-pdf}}}}
+\newcommand{\orcid}[1]{\normalfont\href{https://orcid.org/#1}{\faicon{orcid}}}
+\newcommand{\github}[1]{\normalfont\href{https://github.com/#1}{\faicon{github}}}
+\newcommand{\website}[1]{\normalfont\href{#1}{\textbf{\faicon{globe}}}}
+\newcommand{\link}[1]{\normalfont\href{#1}{\textbf{\faicon{link}}}}
+\newcommand{\video}[1]{\normalfont\href{#1}{\textbf{\faicon{video}}}}
+\newcommand{\youtube}[1]{\normalfont\href{#1}{\faicon{youtube}}}
+\newcommand{\trophy}[1]{\color{vivamagenta}\normalfont\textbf{\normalsize\faicon{trophy}} #1}
 
 \newcommand{\basicInfo}[1]{
   \centerline{#1}

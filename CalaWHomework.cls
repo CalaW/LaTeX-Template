@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWHomework}[2023/02/17 Homework class by CalaW]
+\ProvidesClass{CalaWHomework}[2024/12/26 Homework class by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -8,6 +8,7 @@
 \DeclareBoolOption{draft}
 \DeclareBoolOption{stix}
 \DeclareBoolOption{en}
+\DeclareBoolOption{xiaosi}
 
 \ProcessKeyvalOptions*
 
@@ -19,7 +20,11 @@
 \ifCalaWHomework@en
   \LoadClass[a4paper, 11pt]{article}
 \else
-  \LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
+  \ifCalaWHomework@xiaosi
+    \LoadClass[fontset=none, zihao=-4, sub3section]{ctexart}
+  \else
+    \LoadClass[fontset=none, zihao=5, sub3section]{ctexart}
+  \fi
 \fi
 
 \def\headertitle#1{\def\@headertitle{#1}}
@@ -111,7 +116,7 @@
 \pagestyle{fancy} % use fancy style to enable custom headers and footers
 \fancyhead[L]{\small\@headertitle}
 \fancyhead[C]{}
-\fancyhead[R]{\small chen-che20@mails.tsinghua.edu.cn}
+\fancyhead[R]{\small cc24@mails.tsinghua.edu.cn}
 \fancyfoot[L,R]{}
 \fancyfoot[C]{\small --\ \thepage\ --}
 
@@ -207,7 +212,9 @@
   \setCJKfamilyfont{heavyhei}{Source Han Sans SC Heavy}
   % Source/Noto Han family
   \setmainfont{Source Han Serif SC}
-  \setsansfont{Source Han Sans SC}
+  \setmainfont{Libertinus Serif}[Scale = MatchUppercase]
+  \setsansfont{Helvetica Neue}[Scale = MatchUppercase]
+  % \setsansfont{Source Han Sans SC}
   % \setmonofont{Source Han Mono SC}
   % Source family
   % \setmainfont{Source Serif 4}
