@@ -4,7 +4,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWCV}[2024/12/26 simple CV class wrote by CalaW]
+\ProvidesClass{CalaWCV}[2025/08/23 simple CV class wrote by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -190,7 +190,7 @@
 \fi
 
 % use fontawesome6 icons
-\RequirePackage{fontawesome6}
+\RequirePackage{fontawesome7}
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}
@@ -237,43 +237,43 @@
 
 % defines one's email
 % usage: \email{<email>}
-\newcommand{\email}[1]{\textbf{\faicon{square-envelope}}\ {\color{maincolor}\href{mailto:#1}{#1}}}
+\newcommand{\email}[1]{\faIcon[solid]{square-envelope}\ {\color{maincolor}\href{mailto:#1}{#1}}}
 % defines one's phone
 % usage: \phone{<phone>}
-\newcommand{\phone}[1]{\textbf{\faicon{square-phone}}\ \textcolor{maincolor}{#1}}
-\newcommand{\location}[1]{\textbf{\faicon{location-dot}}\ #1}
+\newcommand{\phone}[1]{\faIcon[solid]{square-phone}\ \textcolor{maincolor}{#1}}
+\newcommand{\location}[1]{\faIcon[solid]{location-dot}\ #1}
 % defines one's linkedin
 % usage: \linkedin{<linkedin>}
-\newcommand{\linkedin}[2][]{\faicon{linkedin-in}\
+\newcommand{\linkedin}[2][]{\faIcon{linkedin-in}\
   \ifthenelse{\isempty{#1}}%
   {\href{#2}{#2}}
   {\href{#2}{#1}}}
-\newcommand{\linkedinsquare}[2][]{\faicon{linkedin}\
+\newcommand{\linkedinsquare}[2][]{\faIcon{linkedin}\
   \ifthenelse{\isempty{#1}}%
   {\href{#2}{#2}}
   {\href{#2}{#1}}}
 % defines one's GitHub
 % usage: \githublink{<github>}
-\newcommand{\githubprofile}[2][]{\faicon{github}\
+\newcommand{\githubprofile}[2][]{\faIcon{github}\
   \ifthenelse{\isempty{#1}}%
   {{\color{maincolor}\href{#2}{#2}}}
   {{\color{maincolor}\href{#2}{#1}}}}
 % defines one's homepage
 % usage: \homepage{<homepage>}
-\newcommand{\homepage}[2][]{\textbf{\faicon{earth-asia}}\
+\newcommand{\homepage}[2][]{\textbf{\faIcon{earth-asia}}\
   \ifthenelse{\isempty{#1}}%
   {{\color{maincolor}\href{#2}{#2}}}
   {{\color{maincolor}\href{#2}{#1}}}}
 
 % icon links
-\newcommand{\filepdf}[1]{\normalfont\href{#1}{\textbf{\faicon{file-pdf}}}}
-\newcommand{\orcid}[1]{\normalfont\href{https://orcid.org/#1}{\faicon{orcid}}}
-\newcommand{\github}[1]{\normalfont\href{https://github.com/#1}{\faicon{github}}}
-\newcommand{\website}[1]{\normalfont\href{#1}{\textbf{\faicon{globe}}}}
-\newcommand{\link}[1]{\normalfont\href{#1}{\textbf{\faicon{link}}}}
-\newcommand{\video}[1]{\normalfont\href{#1}{\textbf{\faicon{video}}}}
-\newcommand{\youtube}[1]{\normalfont\href{#1}{\faicon{youtube}}}
-\newcommand{\trophy}[1]{\color{vivamagenta}\normalfont\textbf{\normalsize\faicon{trophy}} #1}
+\newcommand{\filepdf}[1]{\normalfont\href{#1}{\faIcon[solid]{file-pdf}}}
+\newcommand{\orcid}[1]{\normalfont\href{https://orcid.org/#1}{\faIcon{orcid}}}
+\newcommand{\github}[1]{\normalfont\href{https://github.com/#1}{\faIcon{github}}}
+\newcommand{\website}[1]{\normalfont\href{#1}{\faIcon[solid]{globe}}}
+\newcommand{\link}[1]{\normalfont\href{#1}{\faIcon[solid]{link}}}
+\newcommand{\video}[1]{\normalfont\href{#1}{\faIcon[solid]{video}}}
+\newcommand{\youtube}[1]{\normalfont\href{#1}{\faIcon{youtube}}}
+\newcommand{\trophy}[1]{\color{vivamagenta}\normalfont\textbf{\normalsize\faIcon{trophy}} #1}
 
 \newcommand{\basicInfo}[1]{
   \centerline{#1}

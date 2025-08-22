@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWArticle}[2023/08/29 Statement class by CalaW]
+\ProvidesClass{CalaWArticle}[2025/08/23 Statement class by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -24,9 +24,9 @@
 \geometry{
   a4paper,
   hcentering,
-  textwidth=39\ccwd,
-  top=2cm,
-  bottom=2cm
+  textwidth=33\ccwd,
+  top=3cm,
+  bottom=3cm
 }
 
 % customising headers and footers
@@ -39,15 +39,15 @@
 
 % customize the title
 \renewcommand{\maketitle}{
-  % \vspace*{5pt} % vertical whitespace before the title
-  \begin{flushleft} % left align
+  \vspace*{20pt} % vertical whitespace before the title
+  \begin{centering} % left align
     {\LARGE\sffamily\bfseries\@classname} % class name, in Bold Sans
     % {\LARGE\CJKfamily{heavyhei}\@classname} % use heavy weight
     \par \vspace{5pt} \par
     {\@author}\\ % author name
     {\small\@date} % date
-    % \par \vspace{30pt} % vertical whitespace below the title
-  \end{flushleft}
+    \par \vspace{5pt} % vertical whitespace below the title
+  \end{centering}
   \FloatBarrier
 }
 
@@ -71,7 +71,7 @@
 
 % fonts
 % Source/Noto CJK family
-\setCJKmainfont{Source Han Serif SC}
+\setCJKmainfont{Source Han Serif SC}[ ItalicFont  = 方正楷体_GBK, ]
 \setCJKsansfont{Source Han Sans SC}
 \setCJKmonofont{Source Han Mono SC}
 % heavy weight family
@@ -87,6 +87,18 @@
 \setmonofont{Source Code Pro}
 
 \RequirePackage{xstring}
+
+\RequirePackage{titlesec}
+
+\titleformat{\section}         % Customise the \section command 
+{\large\sffamily\bfseries\raggedright} % Make the \section headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
+{\thesection}{1\ccwd}                      % Can be used to give a prefix to all sections, like 'Section ...'
+{}                           % Can be used to insert code before the heading
+
+\titleformat{\subsection}         % Customise the \subsection command 
+{\normalsize\sffamily\bfseries\raggedright} % Make the \subsection headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
+{\thesubsection}{1\ccwd}                      % Can be used to give a prefix to all sections, like 'Section ...'
+{}                           % Can be used to insert code before the heading
 
 % hyperref
 \RequirePackage[hidelinks]{hyperref}

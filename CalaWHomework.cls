@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{CalaWHomework}[2024/12/26 Homework class by CalaW]
+\ProvidesClass{CalaWHomework}[2025/08/23 Homework class by CalaW]
 
 \RequirePackage{kvoptions}
 
@@ -109,7 +109,7 @@
 
 % adjusting page dimensions and margins
 \RequirePackage{geometry}
-\geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}
+\geometry{a4paper,left=3cm,right=3cm,top=3cm,bottom=3cm}
 
 % customising headers and footers
 \usepackage{fancyhdr}
